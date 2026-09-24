@@ -22,17 +22,15 @@ def chat(messages):
     )
     return message.content[0].text
 
+messages = []
 
+while True:
+    user_input = input ("> ")
+    # print(">", user_input)
+    add_user_message(messages, user_input)
 
-message = client.messages.create(
-    model=model,
-    max_tokens=1000,
-    messages=[
-        {
-            "role": "user",
-            "content": "Write another sentence"
-        }
-    ]
-)
-
-print(message.content[0].text)
+    answer=chat(messages)
+    add_assistant_message(messages, answer)
+    print("---")
+    print(answer)
+    print("---")
