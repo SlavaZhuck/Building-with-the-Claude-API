@@ -20,11 +20,12 @@ def add_assistant_message(messages, text):
     messages.append(assistant_message)
 
 
-def chat(messages, system=None):
+def chat(messages, system=None, temperature=1.0):
     params = {
         "model": model,
         "max_tokens": 1000,
         "messages": messages,
+        "temperature": temperature
     }
 
     if system:
@@ -40,7 +41,7 @@ while True:
     # print(">", user_input)
     add_user_message(messages, user_input)
 
-    answer=chat(messages, system_prompt)
+    answer=chat(messages, system_prompt, temperature = 0.0)
     add_assistant_message(messages, answer)
     print("---")
     print(answer)
